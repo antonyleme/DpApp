@@ -4,11 +4,11 @@
     "slug": "DPApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/dpicon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/dpsplash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#A7110D"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
