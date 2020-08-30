@@ -17,7 +17,7 @@ export default function Page(){
     const navigation = useNavigation();
 
     const [observations, setObservations] = useState();
-    const [payType, setPayType] = useState('app');
+    const [payType, setPayType] = useState('delivery');
     const [chargeFor, setChargeFor] = useState();
     const [modalVisible, setModalVisible] = useState(false);
     const [cardnumber, setCardnumber] = useState();
@@ -52,7 +52,7 @@ export default function Page(){
 
     function submit(){
         setLoading(true);
-        if(payType == 'app'){
+        if(payType == 'delivery'){
             api.post('demands', {
                 items: cart.items,
                 observations,
@@ -128,27 +128,27 @@ export default function Page(){
 
                         <View style={globalStyles.radioGroup}>
                             <RadioButton
+                                value="delivery"
+                                status={ payType === 'delivery' ? 'checked' : 'unchecked' }
+                                onPress={() => setPayType('delivery')}
+                                color={primary}
+                            />
+                            <Text onPress={() => setPayType('delivery')}>Na entrega (dinheiro)</Text>
+                        </View>
+
+                        <View style={globalStyles.radioGroup}>
+                            <RadioButton
                                 value="app"
                                 status={ payType === 'app' ? 'checked' : 'unchecked' }
                                 onPress={() => setPayType('app')}
                                 color={primary}
                             />
-                            <Text onPress={() => setPayType('app')}>Na entrega (dinheiro)</Text>
-                        </View>
-
-                        <View style={globalStyles.radioGroup}>
-                            <RadioButton
-                                value="credit"
-                                status={ payType === 'credit' ? 'checked' : 'unchecked' }
-                                onPress={() => setPayType('credit')}
-                                color={primary}
-                            />
-                            <Text onPress={() => setPayType('credit')}>No aplicativo (cartão)</Text>
+                            <Text onPress={() => setPayType('app')}>No aplicativo (cartão)</Text>
                         </View>
 
                         <View style={{marginTop: 20}}>
                             {
-                                payType == 'app' ?
+                                payType == 'delivery' ?
                                 <View style={globalStyles.formGroup}>
                                     <TextInput style={globalStyles.input} placeholder="Troco para" onChangeText={(text) => setChargeFor(text)}/>
                                 </View>
