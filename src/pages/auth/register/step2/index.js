@@ -20,13 +20,16 @@ export default function Page({navigation, route}){
     }, []);
 
     function changeCep(text){
-
-        if(text.length == 5)
-            text += '-';
-        
         setCep(text);
 
-        if(text.length == 9)
+        let size;
+
+        if(text['6'] == '-')
+            size = 9;
+        else
+            size = 8;
+
+        if(text.length == size)
             cepPromise(text).then(res => {
                 if(res.city != 'Cataguases') return Alert.alert('Oops', 'Só atendemos a cidade de Cataguases!');
                 setCity(res.city);
@@ -61,23 +64,25 @@ export default function Page({navigation, route}){
     }
 
     return(
-        <>
-        <View style={styles.pageTitle}>
-            <Text style={styles.h1}>Onde vamos fazer</Text>
-            <Text style={styles.h1}>suas entregas?</Text>
-        </View>
+        <ScrollView>
+            <View style={styles.wrapper}>
+                <View style={styles.pageTitle}>
+                    <Text style={styles.h1}>Onde vamos fazer</Text>
+                    <Text style={styles.h1}>suas entregas?</Text>
+                </View>
 
-        <View style={styles.wrapper}>
-            <TextInput style={styles.input} placeholder="CEP" onChangeText={text => changeCep(text)}/>
-            <TextInput style={styles.input} placeholder="Bairro" value={neighborhood} onChangeText={text => setNeighborhood(text)}/>
-            <TextInput style={styles.input} placeholder="Rua" value={street} onChangeText={text => setStreet(text)}/>
-            <TextInput style={styles.input} placeholder="Número" onChangeText={text => setNumber(text)}/>
-            <TextInput style={styles.input} placeholder="Complemento" onChangeText={text => setComplement(text)}/>
+                <View>
+                    <TextInput keyboardType={'numeric'} style={styles.input} placeholder="CEP" onChangeText={text => changeCep(text)}/>
+                    <TextInput style={styles.input} placeholder="Bairro" value={neighborhood} onChangeText={text => setNeighborhood(text)}/>
+                    <TextInput style={styles.input} placeholder="Rua" value={street} onChangeText={text => setStreet(text)}/>
+                    <TextInput style={styles.input} placeholder="Número" onChangeText={text => setNumber(text)}/>
+                    <TextInput style={styles.input} placeholder="Complemento" onChangeText={text => setComplement(text)}/>
+                </View>
 
-            <View style={styles.loginButton}>
-                <Button onPress={next}>Continuar</Button>
+                <View style={styles.loginButton}>
+                    <Button onPress={next}>Continuar</Button>
+                </View>
             </View>
-        </View>
-        </>
+        </ScrollView>
     )
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-const img = 'http://10.0.0.133:8000/';
+const img = 'https://api.dp.codenative.com.br/';
 
 export default img;

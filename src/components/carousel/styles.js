@@ -12,5 +12,7 @@ export default StyleSheet.create({
         resizeMode: 'cover',
         borderRadius: 10,
         marginRight: 10,
+        width: 340,
+        height: 340,
     }
 })

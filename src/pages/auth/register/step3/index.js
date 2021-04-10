@@ -42,29 +42,34 @@ export default function Page({navigation, route}){
             dispatch(loginAction(jwtDecode(res.data.access_token).user, res.data.access_token));
             navigation.navigate('Home');
             setLoading(false);
+        }).catch(err => {
+            setLoading(false);
+            Alert.alert('Oops', 'Parece que estamos com instabilidade nesse momento. Tente novamente mais tarde.');
         });
     }
 
     return(
-        <>
-        <View style={styles.pageTitle}>
-            <Text style={styles.h1}>E pra finalizar,</Text>
-            <Text style={styles.h1}>escolha sua senha.</Text>
-        </View>
+        <ScrollView>
+            <View style={styles.wrapper}>  
+                <View style={styles.pageTitle}>
+                    <Text style={styles.h1}>E pra finalizar,</Text>
+                    <Text style={styles.h1}>escolha sua senha.</Text>
+                </View>
 
-        <View style={styles.wrapper}>    
-            <TextInput style={styles.input} placeholder="Senha" onChangeText={text => setPassword(text)}/>
-            <TextInput style={styles.input} placeholder="Repita sua senha" onChangeText={text => setRepeatPassword(text)}/>
+                <View>
+                    <TextInput style={styles.input} secureTextEntry={true} placeholder="Senha" onChangeText={text => setPassword(text)}/>
+                    <TextInput style={styles.input} secureTextEntry={true} placeholder="Repita sua senha" onChangeText={text => setRepeatPassword(text)}/>
+                </View> 
 
-            <View style={styles.loginButton}>
-                {
-                    loading ?
-                    <ActivityIndicator size="large" color="black" />
-                    :
-                    <Button onPress={submit}>Finalizar</Button>
-                }
+                <View style={styles.loginButton}>
+                    {
+                        loading ?
+                        <ActivityIndicator size="large" color="black" />
+                        :
+                        <Button onPress={submit}>Finalizar</Button>
+                    }
+                </View>
             </View>
-        </View>
-        </>
+        </ScrollView>
     )
 }

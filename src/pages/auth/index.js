@@ -43,13 +43,14 @@ export default function Page(){
     }
 
     return(
-        <>
-        <View style={styles.pageTitle}>
-            <Text style={styles.h1}>Faça login para</Text>
-            <Text style={styles.h1}>finalizar o seu pedido.</Text>
-        </View>
+        <ScrollView>
 
-        <View style={styles.wrapper}>
+        <View style={type == 'email' ? styles.wrapper : styles.chooseWrapper}>
+            <View style={type == 'email' ? styles.pageTitle : styles.chooseTitle}>
+                <Text style={styles.h1}>Faça login para</Text>
+                <Text style={styles.h1}>finalizar o seu pedido.</Text>
+            </View>
+
             {
                 type ?
                 (
@@ -57,8 +58,10 @@ export default function Page(){
                     {
                         type == 'email' &&
                         <>
-                            <TextInput style={styles.input} placeholder="Email" onChangeText={text => setEmail(text)}/>
-                            <TextInput secureTextEntry={true} style={styles.input} placeholder="Senha" onChangeText={text => setPassword(text)}/>
+                            <View>
+                                <TextInput style={styles.input} placeholder="Email" onChangeText={text => setEmail(text)}/>
+                                <TextInput secureTextEntry={true} style={styles.input} placeholder="Senha" onChangeText={text => setPassword(text)}/>
+                            </View>
 
                             <View style={styles.loginButton}>
                                 {
@@ -82,13 +85,17 @@ export default function Page(){
                         <TouchableOpacity style={styles.button} onPress={() => setType('email')}>
                             <Text style={styles.textBlack}>Entrar com email e senha</Text>
                         </TouchableOpacity>
+                        {
+                            /*
                         <TouchableOpacity style={styles.fbButton} onPress={() => setType('fb')}>
                             <Text style={styles.textWhite}>Entrar com facebook</Text>
                         </TouchableOpacity>
+                            */
+                        }
                     </>
                 )
             }
         </View>
-        </>
+        </ScrollView>
     )
 }

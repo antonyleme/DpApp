@@ -7,16 +7,26 @@ import { Feather } from '@expo/vector-icons';
 import { ListItem } from 'react-native-elements'
 import Badge from '../../components/badge'
 
-export default function Page({demand, route, navigation}){
+export default function Page({route, navigation}){
 
     useEffect(() => {
     }, []);
 
+    function sum(products){
+        let total = 0;
+
+        products.map(product => {
+            total += product.pivot.price * product.pivot.qtd;
+        })
+
+        return total.toFixed(2).toString().replace('.', ',');
+    }
+
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerTitle: `#${route.params.id} às 20:57`,
+            headerTitle: `#${route.params.demand.id} às 20:57`,
             headerRight: () => (
-                <Text style={{fontSize: 20, fontWeight: 'bold', marginRight: 15}}>R$5,49</Text>
+                <Text style={{fontSize: 20, fontWeight: 'bold', marginRight: 15}}>R${sum(route.params.demand.products)}</Text>
             )
         });
     }, [navigation]);
@@ -26,13 +36,14 @@ export default function Page({demand, route, navigation}){
         <View style={styles.wrapper}>
             <ScrollView>
                 {
-                    demand.products.map(product => (
+                    route.params.demand.products.map((product, index) => (
                         <ListItem
+                            key={index}
                             title={product.name}
-                            subtitle={`R$${product.price.toString().replace('.', ',')}`}
+                            subtitle={`R$${product.price.toFixed(2).toString().replace('.', ',')}`}
                             bottomDivider
                             rightTitle={
-                                <Badge qtd="2"/>
+                                <Badge qtd={product.pivot.qtd}/>
                             }
                         />
                     ))

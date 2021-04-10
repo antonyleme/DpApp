@@ -5,8 +5,18 @@ import { primary } from '../../theme/colors';
 export default StyleSheet.create({
     wrapper: {
         flex: 1,
+        justifyContent: 'space-between',
+        paddingHorizontal: 15,
+        paddingTop: 30,
+        paddingBottom: 30,
+    },
+
+    chooseWrapper: {
+        flex: 1,
         justifyContent: 'center',
-        padding: 15,
+        paddingHorizontal: 15,
+        paddingTop: 30,
+        paddingBottom: 30,
     },
 
     h1: {
@@ -62,7 +72,6 @@ export default StyleSheet.create({
     },
 
     register: {
-        marginBottom: 60,
         marginTop: 20,
         alignItems: 'center'
     },
@@ -83,16 +92,14 @@ export default StyleSheet.create({
     },
 
     loginButton: {
-        position: 'absolute',
-        bottom: 30,
-        left: 15,
         width: '100%',
         alignItems: 'center',
     },
 
     pageTitle: {
-        position: 'absolute',
-        top: 50,
-        paddingHorizontal: 15,
+    },
+
+    chooseTitle: {
+        marginBottom: 50
     }
 })

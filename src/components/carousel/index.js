@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   Text,
@@ -11,8 +11,18 @@ import {
 import styles from './styles';
 
 import SlideIMG from '../../../assets/img/slides/1.png';
+import api from '../../services/api';
+import img from '../../services/img';
 
-export default function ImageSwipe({img}) {
+export default function ImageSwipe() {
+  const [banners, setBanners] = useState([]);
+
+  useEffect(() => {
+    api.get('banners').then(res => {
+      setBanners(res.data.banners);
+      console.log(res.data.banners);
+    });
+  }, [])
 
   return (
     <View style={styles.wrapper}>
@@ -20,12 +30,13 @@ export default function ImageSwipe({img}) {
         horizontal 
         showsVerticalScrollIndicator={false}
       >
-        <View>
-          <Image source={SlideIMG} style={styles.image}/>
-        </View>
-        <View>
-          <Image source={SlideIMG} style={styles.image}/>
-        </View>
+        {
+          banners.map(banner => (
+            <View key={banner.id + 'banner'}>
+              <Image source={{ uri: img + banner.imgPath }} style={styles.image}/>
+            </View>
+          ))
+        }
       </ScrollView>
     </View>
   );

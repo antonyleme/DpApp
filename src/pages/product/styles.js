@@ -59,5 +59,12 @@ export default StyleSheet.create({
     counterText: {
         fontWeight: 'bold',
         fontSize: 25,
-    }
+    },
+    
+    cold: {
+        flexDirection: 'row',
+        marginVertical: 10,
+        padding: 5,
+        alignItems: 'center',
+    },
 })

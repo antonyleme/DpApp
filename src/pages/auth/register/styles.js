@@ -5,8 +5,10 @@ import { primary } from '../../../theme/colors';
 export default StyleSheet.create({
     wrapper: {
         flex: 1,
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         padding: 15,
+        paddingTop: 30,
+        paddingBottom: 30,
     },
 
     h1: {
@@ -83,16 +85,12 @@ export default StyleSheet.create({
     },
 
     loginButton: {
-        position: 'absolute',
-        bottom: 30,
-        left: 15,
+        marginTop: 30,
         width: '100%',
         alignItems: 'center',
     },
 
     pageTitle: {
-        position: 'absolute',
-        top: 50,
-        paddingHorizontal: 15,
+        marginBottom: 30,
     }
 })

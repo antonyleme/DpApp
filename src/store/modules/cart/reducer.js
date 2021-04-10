@@ -4,6 +4,7 @@ import { persistReducer } from 'redux-persist';
 
 const INITIAL_STATE = {
   items: [],
+  card: {},
 };
 
 const AuthReducer = (state = INITIAL_STATE, action) => {
@@ -22,6 +23,11 @@ const AuthReducer = (state = INITIAL_STATE, action) => {
           return {
             ...state,
             items: [],
+          };
+        case '@cart/CARD':
+          return {
+            ...state,
+            card: {number: action.payload.number, valid: action.payload.valid}
           };
         default:
             return state;

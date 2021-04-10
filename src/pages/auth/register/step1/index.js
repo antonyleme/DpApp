@@ -24,21 +24,23 @@ export default function Page(){
     }
 
     return(
-        <>
-        <View style={styles.pageTitle}>
-            <Text style={styles.h1}>Precisamos dos</Text>
-            <Text style={styles.h1}>seus dados pessoais.</Text>
-        </View>
+        <ScrollView>
+            <View style={styles.wrapper}>
+                <View style={styles.pageTitle}>
+                    <Text style={styles.h1}>Precisamos dos</Text>
+                    <Text style={styles.h1}>seus dados pessoais.</Text>
+                </View>
 
-        <View style={styles.wrapper}>
-            <TextInput style={styles.input} placeholder="Nome" onChangeText={text => setName(text)}/>
-            <TextInput style={styles.input} placeholder="Telefone" onChangeText={text => setTel(text)}/>
-            <TextInput style={styles.input} placeholder="Email" onChangeText={text => setEmail(text)}/>
+                <View>
+                    <TextInput style={styles.input} placeholder="Nome" onChangeText={text => setName(text)}/>
+                    <TextInput style={styles.input} placeholder="Telefone" onChangeText={text => setTel(text)}/>
+                    <TextInput style={styles.input} placeholder="Email" onChangeText={text => setEmail(text)}/>
+                </View>
 
-            <View style={styles.loginButton}>
-                <Button onPress={next}>Continuar</Button>
+                <View style={styles.loginButton}>
+                    <Button onPress={next}>Continuar</Button>
+                </View>
             </View>
-        </View>
-        </>
+        </ScrollView>
     )
 }

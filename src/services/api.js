@@ -3,8 +3,8 @@ import { store } from '../store';
 
 store.subscribe(listener)
 
-//const api = axios.create({ baseURL: 'https://api.persistir.codenative.com.br/api' });
-const api = axios.create({ baseURL: 'http://10.0.0.133:8000/api' });
+const api = axios.create({ baseURL: 'https://api.dp.codenative.com.br/api' });
+//const api = axios.create({ baseURL: 'http://192.168.88.76:8080/api' });
 api.defaults.headers.post['Content-Type'] = 'application/json'
 
 function listener() {

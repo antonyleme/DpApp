@@ -22,3 +22,10 @@ export function clearCart() {
         type: '@cart/CLEAR',
     }
 }
+
+export function saveCreditCard(number, valid) {
+    return {
+        type: '@cart/CARD',
+        payload: {number, valid}
+    }
+}

@@ -8,23 +8,25 @@ import { ListItem } from 'react-native-elements'
 import Badge from '../../components/badge'
 import Loading from '../../components/loading';
 import api from '../../services/api';
+import outOfTime from "../../services/outOfTime";
 
-export default function Page({route, navigation}){
+export default function Page({ route, navigation }) {
 
     const [loading, setLoading] = useState(true);
     const [demands, setDemands] = useState([]);
 
     useEffect(() => {
+
         api.get('users/demands').then(res => {
             setDemands(res.data.demands);
             setLoading(false);
         });
     }, []);
 
-    return(
+    return (
         loading ?
-            <Loading/>
-        :
+            <Loading />
+            :
             <View style={styles.wrapper}>
                 <ScrollView>
                     {
@@ -36,7 +38,7 @@ export default function Page({route, navigation}){
                                 bottomDivider
                                 chevron
                                 rightTitle={
-                                    <Badge type={demand.status}/>
+                                    <Badge type={demand.status} />
                                 }
                                 onPress={() => navigation.navigate('Demand', { demand })}
                             />

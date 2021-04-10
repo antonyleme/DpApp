@@ -12,10 +12,12 @@ export default function Component(props){
     const navigation = useNavigation();
 
     return(
-        <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('Product', { product: props.product })}>
-            <Image source={{ uri: img + props.product.imgPath }} style={styles.image}/>
-            <Text>{props.product.name}</Text>
-            <Text style={styles.price}>R${props.product.price.toString().replace('.', ',')}</Text>
-        </TouchableOpacity>
+        <View style={{opacity: props.product.qtd > 0 ? 1 : 0.5}}>
+            <TouchableOpacity style={styles.container} onPress={() => navigation.navigate('Product', { product: props.product })}>
+                <Image source={{ uri: img + props.product.imgPath }} style={styles.image}/>
+                <Text>{props.product.name}</Text>
+                <Text style={styles.price}>R${props.product.price.toFixed(2).toString().replace('.', ',')}</Text>
+            </TouchableOpacity>
+        </View>
     )
 }

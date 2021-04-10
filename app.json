@@ -4,11 +4,11 @@
     "slug": "DPApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/dpicon.png",
+    "icon": "./assets/iosicon.png",
     "splash": {
       "image": "./assets/dpsplash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#A7110D"
+      "backgroundColor": "#000000"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -17,10 +17,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": false,
+      "bundleIdentifier": "br.com.codenative.dp"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "android": {
+      "package": "br.com.codenative.dp",
+      "googleServicesFile": "./google-services.json",
+      "versionCode": 5,
+      "icon": "./assets/icon.png",
+      "permissions": ["NOTIFICATIONS", "USER_FACING_NOTIFICATIONS"],
+      "useNextNotificationsApi": true
     }
   }
 }

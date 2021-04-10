@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef, useLayoutEffect } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { ActivityIndicator, View, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, Modal, Image } from 'react-native';
+import { ActivityIndicator, View, SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, Modal, Alert } from 'react-native';
 import globalStyles from '../../styles';
 import styles from './styles';
 import { Feather } from '@expo/vector-icons';
@@ -68,6 +68,7 @@ export default function Page(){
                     leftIcon={<Feather name="help-circle" size={25}/>}
                     title={"Preciso de ajuda"}
                     bottomDivider
+                    onPress={() => Alert.alert('Preciso de ajuda', 'Entre em contato diretamente com a loja através do telefone (32) 3421-4466')}
                 />
                 <ListItem
                     leftIcon={<Feather name="log-out" size={25}/>}

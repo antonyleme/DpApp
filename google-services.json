@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "161493106131",
+    "project_id": "dpapp-1c800",
+    "storage_bucket": "dpapp-1c800.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:161493106131:android:c8cfe6943377872e418326",
+        "android_client_info": {
+          "package_name": "br.com.codenative.dp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "161493106131-hut9ag05mggg11gsli8mc07ao8nice43.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvIGWIZbWaeq2fNL3oRcfqfLkyiAXKZHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "161493106131-hut9ag05mggg11gsli8mc07ao8nice43.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
